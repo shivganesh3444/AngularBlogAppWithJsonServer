@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FoodpostsService } from './services/foodposts.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'foodblog';
+  constructor(public _foodservice: FoodpostsService){
+    this._foodservice.showImage = true;
+  }
 }

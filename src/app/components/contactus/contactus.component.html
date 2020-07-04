@@ -1,0 +1,110 @@
+<div class="container" >
+<form #contactForm="ngForm" (ngSubmit)="saveContactUs()">
+    <div class="jumbotron" style="margin-top: 5%;">
+        <div class="form-group row"> 
+            <label for="firstname" class="col-sm-2 col-form-label">First Name</label>
+            <div class="col-sm-10">
+              <input type="text" required [class.is-invalid]="fname.invalid && fname.touched" #fname="ngModel" name="firstName" class="form-control"  placeholder="Enter First Name" [(ngModel)]="firstName">
+              <div class="text-danger" *ngIf="(fname.invalid && fname.touched)">
+                <div *ngIf="fname.errors.required">
+                  Firstname is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row"> 
+            <label for="lastname" class="col-sm-2 col-form-label">Last Name</label>
+            <div class="col-sm-10">
+              <input type="text" required [class.is-invalid]="lname.invalid && lname.touched" #lname="ngModel" name="lastName" class="form-control"  placeholder="Enter Last Name" [(ngModel)]="lastName">
+              <div class="text-danger" *ngIf="(lname.invalid && lname.touched)">
+                <div *ngIf="lname.errors.required">
+                  Lastname is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row"> 
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="eml.invalid && eml.touched" #eml="ngModel" name="Email" class="form-control"  placeholder="Enter Email" [(ngModel)]="Email"> 
+              <div class="text-danger" *ngIf="(eml.invalid && eml.touched)">
+                <div *ngIf="eml.errors.required">
+                  Email is required
+                </div>
+                <div *ngIf="eml.errors.pattern">
+                  Please enter correct email address
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row"> 
+            <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+              <input type="text" required pattern="^((\\+91-?)|0)?[0-9]{10}$" [class.is-invalid]="ph.invalid && ph.touched" #ph="ngModel" name="Phone" class="form-control"  placeholder="Enter Phone Number" [(ngModel)]="Phone">
+              <div class="text-danger" *ngIf="(ph.invalid && ph.touched)">
+                <div *ngIf="ph.errors.required">
+                  Phone number is required
+                </div>
+                <div *ngIf="ph.errors.pattern">
+                  Phone number must be 10 digits and numeric only
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row"> 
+            <label for="address" class="col-sm-2 col-form-label">Address</label>
+            <div class="col-sm-10">
+              <input type="text" required [class.is-invalid]="addr.invalid && addr.touched" #addr="ngModel" name="Address" class="form-control"  placeholder="Enter Address" [(ngModel)]="Address">
+              <div class="text-danger" *ngIf="(addr.invalid && addr.touched)">
+                <div *ngIf="addr.errors.required">
+                  Address is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row"> 
+            <label for="yourmessage" class="col-sm-2 col-form-label">Your Message</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" required [class.is-invalid]="message.invalid && message.touched" #message="ngModel" name="yourMessage" rows="5"  placeholder="Enter your message here" [(ngModel)]="yourMessage"></textarea>
+              <div class="text-danger" *ngIf="(message.invalid && message.touched)">
+                <div *ngIf="message.errors.required">
+                  Message is required
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="male" #gen="ngModel" name="Gender" [(ngModel)]="Gender" value="male" required>
+                  <label class="form-check-label" for="male">
+                   Male
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" id="female" #gen="ngModel" type="radio" name="Gender" [(ngModel)]="Gender"  value="female" required>
+                  <label class="form-check-label" for="female">
+                    Female
+                  </label>
+                  <div class="text-danger" *ngIf="(gen.invalid && gen.touched)">
+                    <div *ngIf="gen.errors.required">
+                      Please select gender
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <div class="form-group row">
+              <div class="col-sm-2">
+                <button type="submit" [disabled]="contactForm.invalid" class="btn btn-success btn-lg">
+                  <span class="fa fa-address-book"></span> Submit
+                </button>
+              </div>
+          </div>
+    </div>
+  </form>
+</div>

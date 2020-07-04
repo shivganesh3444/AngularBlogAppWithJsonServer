@@ -1,0 +1,48 @@
+<div class="container" >
+    <form #formUpdateData="ngForm" (ngSubmit)="updateFoodPost()">
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron" style="margin-top: 5%;">
+                    <div class="form-group row"> 
+                      <input type="hidden" name="id" [(ngModel)]="id">
+                        <div class="col-sm-10">
+                            Enter title for the post
+                        </div>
+                      </div>
+                    <div class="form-group row"> 
+                        <div class="col-sm-10">
+                            <input type="text" [readonly] ="posttitle.invalid" required #posttitle="ngModel" [class.is-invalid]="posttitle.invalid && posttitle.touched" class="form-control"  placeholder="Enter title here" name="Title" [(ngModel)]="Title"> 
+                            <div class="text-danger" *ngIf="(posttitle.invalid && posttitle.touched)">
+                              <div *ngIf="posttitle.errors.required">
+                                Title is required
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row"> 
+                        <div class="col-sm-10">
+                           Enter description for the post
+                        </div>
+                      </div>
+                      <div class="form-group row"> 
+                        <div class="col-sm-10">
+                            <textarea required [readonly] ="postdescription.invalid" #postdescription="ngModel" [class.is-invalid]="postdescription.invalid && postdescription.touched" class="form-control" rows="5" placeholder="Enter description here" name="Description" [(ngModel)]="Description"> </textarea>
+                            <div class="text-danger" *ngIf="(postdescription.invalid && postdescription.touched)">
+                              <div *ngIf="postdescription.errors.required">
+                                Description is required
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row"> 
+                        <div class="col-sm-4">
+                          <button type="submit" [disabled]="formUpdateData.invalid" class="btn btn-success btn-lg">
+                            <span class="fa fa-save"></span> Save
+                          </button>
+                        </div>
+                      </div>
+                </div>
+            </div>
+          </div>
+    </form>
+</div> 

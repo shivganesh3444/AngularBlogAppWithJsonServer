@@ -1,0 +1,48 @@
+<div class="container">
+  <form #foodPostData="ngForm" (ngSubmit)="saveFoodPost()">
+    <div class="jumbotron" style="margin-top: 5%;">
+      <div class="form-group row"> 
+        <div class="col-sm-10">
+            Enter title for the post
+        </div>
+      </div>
+      <div class="form-group row"> 
+        <div class="col-sm-10">
+            <input type="text" #posttitle="ngModel" required name="Title" [class.is-invalid]="posttitle.invalid && posttitle.touched" class="form-control"  placeholder="Enter title here" [(ngModel)]="Title">
+            <div class="text-danger" *ngIf="(posttitle.invalid && posttitle.touched)">
+                <div *ngIf="posttitle.errors.required">
+                  Title is required
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="form-group row"> 
+        <div class="col-sm-10">
+           Enter description for the post
+        </div>
+      </div>
+      <div class="form-group row"> 
+        <div class="col-sm-10">
+            <textarea #postdescription="ngModel" required name="Description" [class.is-invalid]="postdescription.invalid && postdescription.touched" class="form-control" rows="5"  placeholder="Enter description here"  [(ngModel)]="Description" ></textarea>
+            <div class="text-danger" *ngIf="(postdescription.invalid && postdescription.touched)">
+              <div *ngIf="postdescription.errors.required">
+                Description is required
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2">
+          <button type="submit" [disabled]="foodPostData.invalid" class="btn btn-success btn-lg">
+            <span class="fa fa-save"></span> Save
+          </button>
+        </div>
+        <div class="col-sm-2">
+          <button type="reset" class="btn btn-primary btn-lg">
+            <span class="fa fa-retweet"></span> Clear
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
